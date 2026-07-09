@@ -1,15 +1,26 @@
 package com.ems.enrollment.repository;
 
+import com.ems.course.entity.Course;
 import com.ems.enrollment.entity.Enrollment;
+import com.ems.student.entity.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
 public interface EnrollmentRepository extends JpaRepository<Enrollment, Long> {
 
-    boolean existsByStudentIdAndCourseIdAndSemester(Long studentId, Long courseId, String semester);
+    boolean existsByStudentAndCourseAndSemester(
+            Student student,
+            Course course,
+            String semester
+    );
 
-    long countByStudentIdAndSemester(Long studentId, String semester);
+    long countByStudentAndSemester(
+            Student student,
+            String semester
+    );
 
-    List<Enrollment> findByStudentId(Long studentId);
+    List<Enrollment> findByStudent(
+            Student student
+    );
 }
