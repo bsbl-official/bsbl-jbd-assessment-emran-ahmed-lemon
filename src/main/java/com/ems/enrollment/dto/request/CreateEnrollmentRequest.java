@@ -14,10 +14,10 @@ import java.io.Serializable;
 public class CreateEnrollmentRequest implements Serializable {
 
     @NotNull(message = "Student ID is required")
-    private Long studentId;
+    private String studentId;
 
     @NotNull(message = "Course ID is required")
-    private Long courseId;
+    private String courseId;
 
     @NotBlank(message = "Semester is required")
     private String semester;
