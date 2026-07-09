@@ -1,0 +1,56 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: education-management-system
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/education
+    username: postgres
+    password: emranisking
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      timeout: 5000
+
+  cache:
+    type: redis
+    redis:
+      time-to-live: 600000
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+
+jwt:
+  secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970337336763979244226452948404D6351655468576D5A7134743777217A25432A46
+  expiration: 3600000
+
+rabbitmq:
+  exchange: enrollment.exchange
+  queue: enrollment.queue
+  routing-key: enrollment.routing-key
+
+logging:
+  level:
+    root: INFO
+    com.ems: DEBUG
